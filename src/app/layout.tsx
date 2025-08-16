@@ -1,22 +1,21 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import Navbar from "@/components/Navbar"
+import "./globals.css"
+import ThemeProviderWrapper from "@/components/ThemeProviderWrapper"
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'Next.js Full-Stack Template',
-  description: 'A comprehensive Next.js template with modern tech stack',
+export const metadata = {
+  title: "NextStack",
+  description: "Modern Next.js Template",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-50" suppressHydrationWarning>
+      <body>
+        <ThemeProviderWrapper>
+          <Navbar />
+          {children}
+        </ThemeProviderWrapper>
+      </body>
     </html>
   )
 }
